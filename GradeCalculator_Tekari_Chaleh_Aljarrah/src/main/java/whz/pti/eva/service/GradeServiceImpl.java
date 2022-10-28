@@ -16,8 +16,11 @@ public class GradeServiceImpl implements GradeService{
 
     private GradeRepository gradeRepository;
 
+//  @Autowired
+//	private GradeRepository gradeRepository;
+
     @Autowired
-    public void GardeServiceImpl(GradeRepository gradeRepository) {
+    public GradeServiceImpl(GradeRepository gradeRepository) {
         this.gradeRepository = gradeRepository;
     }
 

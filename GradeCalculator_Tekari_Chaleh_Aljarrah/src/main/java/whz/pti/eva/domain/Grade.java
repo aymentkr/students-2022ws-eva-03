@@ -1,22 +1,27 @@
 package whz.pti.eva.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Grade {
-
-    @Id
+	
+    @Id @GeneratedValue
+    private Integer id;
+    
     private String lecture;
     private String grade;
+    
+    public Grade() {
+
+    }
 
     public Grade(String lecture, String grade) {
         this.lecture=lecture;
         this.grade=grade;
     }
-    public Grade() {
-
-    }
+   
 
     public String getGrade() {
         return grade;
