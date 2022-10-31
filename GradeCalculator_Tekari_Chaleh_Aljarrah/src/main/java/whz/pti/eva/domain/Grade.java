@@ -10,6 +10,7 @@ import javax.persistence.Id;
 public class Grade {
 
     @Id
+    private int id;
     private String lecture;
     private String grade;
 
