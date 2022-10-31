@@ -1,26 +1,28 @@
 package whz.pti.eva.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 import whz.pti.eva.domain.Grade;
 import whz.pti.eva.domain.GradeRepository;
 
 import java.util.List;
 
+/**
+ * The type Grade service.
+ */
 @Service
 public class GradeServiceImpl implements GradeService{
 
-    private static final Logger log = LoggerFactory.getLogger(GradeServiceImpl.class);
-
     private GradeRepository gradeRepository;
 
-//  @Autowired
-//	private GradeRepository gradeRepository;
-
+    /**
+     * Garde service.
+     *
+     * @param gradeRepository the grade repository
+     */
     @Autowired
-    public GradeServiceImpl(GradeRepository gradeRepository) {
+    public void GardeServiceImpl(GradeRepository gradeRepository) {
         this.gradeRepository = gradeRepository;
     }
 
