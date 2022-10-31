@@ -10,7 +10,6 @@ import javax.persistence.Id;
 public class Grade {
 
     @Id
-    private int id;
     private String lecture;
     private String grade;
 
@@ -42,15 +41,6 @@ public class Grade {
     }
 
     /**
-     * Sets grade.
-     *
-     * @param grade the grade
-     */
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    /**
      * Gets lecture.
      *
      * @return the lecture
@@ -59,12 +49,4 @@ public class Grade {
         return lecture;
     }
 
-    /**
-     * Sets lecture.
-     *
-     * @param lecture the lecture
-     */
-    public void setLecture(String lecture) {
-        this.lecture = lecture;
-    }
 }

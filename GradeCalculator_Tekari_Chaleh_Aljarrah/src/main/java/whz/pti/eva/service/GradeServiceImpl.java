@@ -2,7 +2,6 @@ package whz.pti.eva.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 import whz.pti.eva.domain.Grade;
 import whz.pti.eva.domain.GradeRepository;
 
@@ -34,11 +33,13 @@ public class GradeServiceImpl implements GradeService{
 
     @Override
     public void addGrade(String lecture, String grade) {
+        System.out.println(lecture+" "+grade);
         gradeRepository.save(new Grade(lecture,grade));
     }
 
     @Override
     public double calculateAverage() {
+
         return listAllGrades().stream()
                 .mapToDouble(g -> Double.parseDouble(g.getGrade()))
                 .average()

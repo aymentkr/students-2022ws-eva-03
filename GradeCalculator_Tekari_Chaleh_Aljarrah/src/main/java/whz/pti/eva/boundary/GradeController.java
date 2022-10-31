@@ -15,6 +15,11 @@ import java.util.List;
 public class GradeController {
     private final GradeService gradeService;
 
+    /**
+     * Instantiates a new Grade controller.
+     *
+     * @param gradeService the grade service
+     */
     public GradeController(GradeService gradeService) {
         this.gradeService = gradeService;
     }
@@ -26,14 +31,23 @@ public class GradeController {
      * @return the string
      */
     @GetMapping("/grades")
-    List<Grade> listAllGrades(Model model) {
+    public String listAllGrades(Model model) {
         List<Grade> grades = gradeService.listAllGrades();
         model.addAttribute("grades", grades);
         model.addAttribute("average", gradeService.calculateAverage());
-        return gradeService.listAllGrades();
+        return "grades";
     }
+
+    /**
+     * Add grade.
+     *
+     * @param lecture the lecture
+     * @param grade   the grade
+     * @return the string
+     */
     @PostMapping("/addGrade")
-    public void addGrade(@RequestParam String lecture, @RequestParam String grade) {
+    public String addGrade(@RequestParam String lecture, @RequestParam String grade) {
         gradeService.addGrade(lecture, grade);
+        return "redirect:grades";
     }
 }
