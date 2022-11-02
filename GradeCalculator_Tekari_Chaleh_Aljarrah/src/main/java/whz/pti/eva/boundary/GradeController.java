@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class GradeController {
     @Autowired
-    private final GradeService gradeService;
+    private GradeService gradeService;
 
     /**
      * Instantiates a new Grade controller.
