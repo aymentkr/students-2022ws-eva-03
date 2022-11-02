@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest//****** (classes = GradeCalculatorTekariChalehAljarrahApplicationTests.class) //(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode= DirtiesContext.ClassMode.AFTER_CLASS)
-class GradeControllerTest {
+class whGradeControllerTest {
 
 
     @Autowired
@@ -61,6 +61,16 @@ class GradeControllerTest {
             e.printStackTrace();
         }
     }
+    @Test
+    void addGrade() throws Exception {
+        mockMvc.perform(post("/addGrade")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .param("lecture", "Mathe")
+                        .param("grade", "1.1")
+                )
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("grades"));
+}
 
 
 }
