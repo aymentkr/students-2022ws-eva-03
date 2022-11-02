@@ -30,6 +30,8 @@ public class GradeController {
      * @param model the model
      * @return the string
      */
+    //@RequestMapping(value = "/grades", method = RequestMethod.GET) OR
+    //@RequestMapping("/grades") OR
     @GetMapping("/grades")
     public String listAllGrades(Model model) {
         List<Grade> grades = gradeService.listAllGrades();
@@ -45,6 +47,7 @@ public class GradeController {
      * @param grade   the grade
      * @return the string
      */
+    //@RequestMapping(value = "/addGrade", method = RequestMethod.POST) OR
     @PostMapping("/addGrade")
     public String addGrade(@RequestParam String lecture, @RequestParam String grade) {
         gradeService.addGrade(lecture, grade);
