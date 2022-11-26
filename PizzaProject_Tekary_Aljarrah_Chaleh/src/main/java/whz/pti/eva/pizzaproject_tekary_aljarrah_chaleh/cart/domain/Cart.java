@@ -1,9 +1,8 @@
 package whz.pti.eva.pizzaproject_tekary_aljarrah_chaleh.cart.domain;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.TableGenerator;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +12,8 @@ public class Cart {
     @Id
     private String userId;
     private int quantity;
-
-    private List<Item> items=new ArrayList<>();
+    @OneToMany
+    private List<Item> items;
 
 
 
