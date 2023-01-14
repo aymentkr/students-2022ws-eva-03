@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<html lang="de">
+
+<style>
+    DIV.table {
+        display: table;
+    }
+
+    SPAN.tr,
+    DIV.tr {
+        display: table-row;
+    }
+
+    SPAN.td {
+        display: table-cell;
+    }
+
+    FORM.td {
+        display: table-cell;
+    }
+
+
+</style>
+
+<head th:replace="PizzaForever-App :: html_head"> </head>
+
+<body>
+
+<!-- Navigation-->
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container" style="width: 100%;padding-top: 1%;">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Benutzername</th>
+                <th>E-mail</th>
+                <th>Adressen</th>
+            </tr>
+            </thead>
+            <tbody>        
+             <th:block th:each="customer : ${customers}">
+                <tr>
+                    <td> <p th:text="${customer.getFirstName()}"></p></td>
+                    <td> <p th:text="${customer.getLastName()}"></p></td> 
+                    <td> <p th:text="${customer.getLoginName()}"></p></td> 
+                    <td> <p th:text="${customer.getEmail()}"></p></td> 
+                    <td> <p >Adresses </p></td> 
+                </tr>
+             </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+</html>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PizzaProject_Tekary_Aljarrah_Chaleh.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PizzaProject_Tekary_Aljarrah_Chaleh.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/students-2022ws-eva-03.iml" filepath="$PROJECT_DIR$/.idea/students-2022ws-eva-03.iml" />
     </modules>
   </component>

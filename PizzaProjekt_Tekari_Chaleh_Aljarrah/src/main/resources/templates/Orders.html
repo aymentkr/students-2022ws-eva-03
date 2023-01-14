@@ -1,0 +1,57 @@
+<html lang="de">
+
+<head th:replace="PizzaForever-App :: html_head"> </head>
+
+<body>
+
+<!-- Navigation-->
+<div th:replace="fragments/topnav :: navbar"></div>
+
+
+<div class="container" style="width: 100%;">
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-primary text-center font-weight-bold" role="alert">
+                Das ist Ihre Bestellung
+            </div>
+            <img src="../static/img/show.png" alt="Showing png" style=" width: 90%; height: 94%; ">
+        </div>
+        <div class="col-8">
+            <div class="d-flex flex-column">
+                <div class="table-responsive">
+                    <table th:each="order : ${orders}" class="table">
+                        <thead>
+                        <tr>
+                            <th>Pizza</th>
+                            <th>Größe</th>
+                            <th>Menge</th>
+                            <th>Preis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="orderItem : ${order.getOrderItems()}">
+                            <div>
+                                <tr>
+                                    <td><strong th:text="${orderItem.getPizza().getName()}"></strong><br></td>
+                                    <td>
+                                        <i th:text="${orderItem.getSize()}"></i>
+                                    </td>
+                                    <td>
+                                        <span th:text="${orderItem.getQuantity()}"></span>
+                                    </td>
+                                    <td>
+                                        <span th:text="${orderItem.getPrice()}"></span><span>&#8364;</span>
+                                    </td>
+                                </tr>
+                            </div>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -11,10 +11,5 @@
         <module name="PizzaProject_Tekary_Aljarrah_Chaleh.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="GradeCalculator_Tekari_Chaleh_Aljarrah" target="17" />
-      <module name="GradeCalculator_Tekari_Chaleh_Aljarrah.main" target="17" />
-      <module name="GradeCalculator_Tekari_Chaleh_Aljarrah.test" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

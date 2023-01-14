@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<html lang="de">
+
+<style>
+    DIV.table {
+        display: table;
+    }
+
+    SPAN.tr,
+    DIV.tr {
+        display: table-row;
+    }
+
+    SPAN.td {
+        display: table-cell;
+    }
+
+    FORM.td {
+        display: table-cell;
+    }
+
+
+</style>
+<head th:replace="PizzaForever-App :: html_head"> </head>
+
+<body>
+
+<!-- Navigation-->
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container" style="width: 100%;padding-top: 1%;">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Benutzername</th>
+                <th>E-mail</th>
+                <th>Adressen</th>
+                <th>Status Änderung</th>
+            </tr>
+            </thead>
+            <tbody>        
+             <th:block th:each="customer : ${customers}">
+                <tr>
+                    <td> <p th:text="${customer.getFirstName()}"></p></td>
+                    <td> <p th:text="${customer.getLastName()}"></p></td> 
+                    <td> <p th:text="${customer.getLoginName()}"></p></td> 
+                    <td> <p th:text="${customer.getEmail()}"></p></td> 
+                    <td> <p >Adresses </p></td> 
+                    <td>
+                            <form th:action="@{/customer/setState}" method="post">
+                                <select id="statusBox" th:name="state">
+                                    <option selected disabled th:text="Operation..." />
+                                    <option th:text="Aktivieren" th:value="true" />
+                                    <option th:text="Deaktivieren" th:value="false" />
+                                </select>
+                                <input type="hidden" name="userId" th:value="${customer.getLoginName()}" />
+                                <button type="submit" class="btn btn-outline-success"><i class="fa fa-pencil"></i></button>
+                            </form>
+                    </td>
+                </tr>
+             </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>

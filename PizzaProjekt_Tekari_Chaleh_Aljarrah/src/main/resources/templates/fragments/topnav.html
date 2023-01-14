@@ -1,0 +1,61 @@
+<div th:fragment="navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="/" >Pizza Forever</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#!">All Products</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form th:action="@{/cart}" method="GET" class="d-flex">
+        <button class="btn btn-outline-dark" type="submit">
+          <i class="bi-cart-fill me-1"></i>
+          zum Warenkorb
+        </button>
+      </form>
+      <form th:if="${currentCustomer==null}" th:action="@{/login}" class="list-inline-item float-right" method="GET">
+        <button type="submit" class="btn btn-outline-success"><i class="fa fa-sign-in-alt"> Login</i></button>
+      </form>
+      <div sec:authorize="isAuthenticated()" class="list-inline-item float-right">
+        <form th:action="@{/logout}" method="GET">
+          <button type="submit"  class="btn btn-outline-danger"><i class="fa fa-sign-out-alt"> Logout</i></button>
+        </form>
+      </div>
+
+      <div th:if="${currentCustomer==null}" class="list-inline-item float-right">
+        <form th:action="@{/register}" method="GET">
+          <button type="submit" class="btn btn-outline-primary"><i class="fa fa-user-plus"> Registrieren</i></button>
+        </form>
+      </div>
+      <div sec:authorize="hasAuthority('ADMIN')" class="list-inline-item float-right">
+        <form th:action="@{/customers}" method="GET">
+          <button type="submit" class="btn btn-outline-dark"><i class="fa fa-list-alt"> Customers</i></button>
+        </form>
+      </div>
+      <div sec:authorize="isAuthenticated()" class="list-inline-item float-right">
+        <form  th:action="@{/my_profile}" method="GET">
+          <button type="submit" class="btn btn-outline-dark"><i class="fa fa-cog"> Settings</i></button>
+        </form>
+      </div>
+      <div sec:authorize="isAuthenticated()" class="list-inline-item float-right">
+        <form th:action="@{/my_orders}" method="GET">
+          <button type="submit" class="btn btn-outline-dark"><i class="fa fa-list-alt"> Orders</i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+</div>
+
+
+
