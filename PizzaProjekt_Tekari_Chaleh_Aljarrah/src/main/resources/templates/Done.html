@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza Forever - Groupe 08</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<head>
+    <div class="row" style="width: 100%;">
+        <div class="col">
+            <div class="alert alert-secondary" style="width: 100%;" role="alert">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../static/img/pizza.png" alt="Pizza png" width="35%" height="100%">
+                    </div>
+                    <div class="col-5 text-center">
+                        <h1 style="padding-top:5%;">Pizza Forever</h1>
+                    </div>
+                    <ul style="padding-top:0%;">
+                        <li class="list-inline align-items-center float-right" th:if="${currentCustomer}">
+                            <div sec:authorize="isAuthenticated()" class="list-inline-item float-right">
+                                <form th:action="@{/logout}" method="GET">
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fa fa-sign-out-alt">
+                                        Logout</i></button>
+                                </form>
+                            </div>
+                            <div sec:authorize="isAuthenticated()" class="list-inline-item float-right">
+                                <form th:action="@{/}" method="GET">
+                                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-user-plus">
+                                        Home</i></button>
+                                </form>
+                            </div>
+                            <div sec:authorize="isAuthenticated()" class="list-inline-item float-right">
+                                <form th:action="@{/my_profile}" method="GET">
+                                    <button type="submit" class="btn btn-outline-dark"><i class="fa fa-cog">
+                                        Settings</i></button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</head>
+<div class="container" style="width: 100%;">
+    <div class="row">
+        <div class="col-4">
+            <img src="../static/img/done.png" width="100%"/>
+        </div>
+        <div class="col-8">
+            <div class=" text-center">
+                <h1 class="center">Danke für Ihre bestellung !</h1>
+                <p class="lead"><strong>Wir werden es schnell wie möglioch nach Ihnen schicken</strong><hr>
+                <p>
+                  Möchten Sie änderung ? <a href="">Rufen Sie uns</a>
+                </p>
+                <div sec:authorize="isAuthenticated()" class="lead">
+                    <form th:action="@{/}" method="GET">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fa fa-user-plus">
+                            Bestellen Sie etwas anderes</i></button>
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+</html>
