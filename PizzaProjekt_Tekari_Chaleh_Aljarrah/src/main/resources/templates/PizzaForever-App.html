@@ -75,7 +75,7 @@
         <tr th:each="pizza : ${pizzas}">
             <form class="row d-flex justify-content-center align-items-center" th:action="@{/addItemToCart}" th:object="${newItemForm}" method="post" style="border-style: double;padding: 1%;margin: 0%;">
                 <td>
-                    <img th:src="@{${'../static/img/' + pizza.getName() + '.jpg'}}" width="150px"height="100px" />
+                    <img th:src="@{${'../static/img/pizza/' + pizza.getName() + '.jpg'}}" width="150px"height="100px" />
                     <b class="fw-bold" th:text="${pizza.getName()}"></b>
                 </td>
         <td>

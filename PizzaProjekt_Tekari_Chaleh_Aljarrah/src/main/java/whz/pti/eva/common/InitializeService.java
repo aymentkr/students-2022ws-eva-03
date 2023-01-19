@@ -46,7 +46,7 @@ public class InitializeService {
 				.withPriceLarge(new BigDecimal("5.50")),
 				
 				new Pizza()
-				.withName("Salami")
+				.withName("Napoli")
 				.withPriceSmall(new BigDecimal("1.10"))
 				.withPriceMedium(new BigDecimal("3.20"))
 				.withPriceLarge(new BigDecimal("5.10")),
@@ -61,7 +61,25 @@ public class InitializeService {
 				.withName("Veggie")
 				.withPriceSmall(new BigDecimal("1.50"))
 				.withPriceMedium(new BigDecimal("1.90"))
-				.withPriceLarge(new BigDecimal("2.40"))
+				.withPriceLarge(new BigDecimal("2.40")),
+
+				new Pizza()
+						.withName("Spinat")
+						.withPriceSmall(new BigDecimal("1.20"))
+						.withPriceMedium(new BigDecimal("3.00"))
+						.withPriceLarge(new BigDecimal("5.50")),
+
+				new Pizza()
+						.withName("Tonno")
+						.withPriceSmall(new BigDecimal("1.20"))
+						.withPriceMedium(new BigDecimal("4.50"))
+						.withPriceLarge(new BigDecimal("6.50")),
+
+				new Pizza()
+						.withName("Mozarella")
+						.withPriceSmall(new BigDecimal("1.20"))
+						.withPriceMedium(new BigDecimal("3.50"))
+						.withPriceLarge(new BigDecimal("5.50")),
 		};
 		
 		pizzaRepository.saveAll(List.of(pizzas));
@@ -70,7 +88,7 @@ public class InitializeService {
 		admin.setFirstName("Admin");
 		admin.setLastName("Administrator");
 		admin.setLoginName("admin");
-		admin.setEmail("bnutz@eva.com");
+		admin.setEmail("admi@pizzaforever.com");
 		admin.setPasswordHash(passwordEncoder.encode("a1"));
 		admin.setRole(Role.ADMIN);
 		admin.setActive(true);
@@ -78,7 +96,7 @@ public class InitializeService {
 		customer1.setFirstName("User");
 		customer1.setLastName("testuser");
 		customer1.setLoginName("bnutz");
-		customer1.setEmail("bnutz@eva.com");
+		customer1.setEmail("bnutz@pizzaforever.com");
 		customer1.setPasswordHash(passwordEncoder.encode("n1"));
 		customer1.setRole(Role.USER);
 		customer1.setActive(true);
@@ -86,7 +104,7 @@ public class InitializeService {
 		customer2.setFirstName("User");
 		customer2.setLastName("testuser");
 		customer2.setLoginName("cnutz");
-		customer2.setEmail("cnutz@eva.com");
+		customer2.setEmail("cnutz@pizzaforever.com");
 		customer2.setPasswordHash(passwordEncoder.encode("n2"));
 		customer2.setRole(Role.USER);
 		customer2.setActive(true);

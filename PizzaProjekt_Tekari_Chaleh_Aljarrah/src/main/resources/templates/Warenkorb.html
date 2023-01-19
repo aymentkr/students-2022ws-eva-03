@@ -54,7 +54,7 @@
                                             <button rel="tooltip" type="submit" class="btn btn-default"><i class="fa fa-pencil"></i></button>
                                         </form>
                                     </td>
-                                    <td><span th:text="${item.getSinglePriceFromPizzaAndSize()}"></span><span>&#8364;</span></td>
+                                    <td><span th:text="${item.getSinglePriceFromPizzaAndSize()}"></span></td>
                                     <td>
                                         <form th:action="@{/removeItemFromCart}" class="form-inline" method="POST">
                                         <input type="hidden" name="itemId" th:value="${item.getId()}" />
@@ -62,7 +62,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <span th:text="${item.getPrice()}"></span><span>&#8364;</span>
+                                        <span th:text="${item.getPrice()}"></span>
                                     </td>
                                 </tr>
                              </th:block>
@@ -79,8 +79,7 @@
                     </div>
                 </div>
                 </div>
-                <form th:action="@{/add(from=${currentCustomer.getId()}) }" method="POST">
-                    <input type="hidden" name="sume" value="${sum}"/>
+                <form th:action="@{/pay(from=${currentCustomer.getId()})}" method="POST">
                     <input type="submit" class="btn btn-outline-success pull-right" value="bezahlen" />
                 </form>
                 <form th:action="@{/}" method="GET">
@@ -88,8 +87,6 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>
     </div>
 </body>
 
