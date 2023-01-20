@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import whz.pti.eva.MPA.PaypalService;
+import whz.pti.eva.services.MPA.PaypalService;
 import whz.pti.eva.domain.cart.Cart;
 import whz.pti.eva.domain.cart.NewItemForm;
 import whz.pti.eva.domain.pizza.PizzaSize;
@@ -30,7 +30,7 @@ public class CartController {
 	 * The Service.
 	 */
 	@Autowired
-	PaypalService service;
+	PaypalService paypalService;
 
 	/**
 	 * The constant SUCCESS_URL.
@@ -197,17 +197,17 @@ public class CartController {
     @RequestMapping(value = "/pay", method = {RequestMethod.POST})
 	public String processCartToOrder(@RequestParam String from, Model model) {
 		String userId = ((CurrentCustomer)model.asMap().get("currentCustomer")).getCustomer().getLoginName();
-		Double total = cartService.calculateSumOfAllItemsInCartWithUserId(userId).doubleValue();;
+		Double total = cartService.calculateSumOfAllItemsInCartWithUserId(userId).doubleValue();
 		cartService.processCartWithUserIdToOrder(from);
 		Cart cart = cartService.findByUserIdOrElseCreateAndReturn(from);
 
 		try {
-			Payment payment = service.createPayment(total,"EUR", "paypal",
+			Payment payment = paypalService.createPayment(total,"EUR", "paypal",
 					"sale", "Payment Gateway With @Paypal", "http://localhost:9090/" + CANCEL_URL,
 					"http://localhost:9090/" + SUCCESS_URL);
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
-					link.getHref();
+					return "redirect:"+ link.getHref();
 				}
 			}
 		} catch (PayPalRESTException e) {
@@ -218,7 +218,6 @@ public class CartController {
         cartService.savePayment(cart, String.valueOf(total), from);
 		cartService.deleteItemsInCartWithUserId(from);
 		return "redirect:/";
-		//return "Done";
 	}
 
 
@@ -230,7 +229,7 @@ public class CartController {
 	@GetMapping(value = SUCCESS_URL)
 	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
 		try {
-			Payment payment = service.executePayment(paymentId, payerId);
+			Payment payment = paypalService.executePayment(paymentId, payerId);
 			System.out.println(payment.toJSON());
 			if (payment.getState().equals("approved")) {
 				return "success";

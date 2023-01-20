@@ -1,4 +1,4 @@
-package whz.pti.eva.MPA;
+package whz.pti.eva.services.MPA;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -33,7 +33,7 @@ public class PaypalService {
 		Amount amount = new Amount();
 		amount.setCurrency(currency);
 		total = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
-		amount.setTotal(String.format("%.3f", total));
+		amount.setTotal(String.format(String.valueOf(total)));
 
 		Transaction transaction = new Transaction();
 		transaction.setDescription(description);
